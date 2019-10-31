@@ -27,14 +27,14 @@ Not a bug, but it is worth noting that the limitations of the demo (which would 
    NOTE : Build container needs curl installed so if running behind a proxy forward local proxy settings in via  --build-arg
    Example: 
    ```bash
-    docker build --build-arg http_proxy=$http_proxy --build-arg http_proxy=$https_proxy -t sqlserver2017-vdi:latest ./
+    docker build --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy -t sqlserver2017-vdi:latest ./
 
    ```
    
 3. Run the docker container
    
    ```bash
-   docker run    -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=somepassword123' -p 1433:1433 -d sqlserver2017-vdi:latest
+   docker run    -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Somepassword123' -p 1433:1433 -d sqlserver2017-vdi:latest
    ```
 
 4. Create a db called exampledb (eg using Microsoft SQL Server Management Studio -
@@ -43,11 +43,11 @@ https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-
 5. Start (install) the vdidevice inside the container
 	
    ```bash
-   docker exec -it -e LD_LIBRARY_PATH=/opt/mssql/lib db1a8  /opt/mssql/vdidevice  B D exampledb sa somepassword123 /tmp/example.bak
+   docker exec -it -e LD_LIBRARY_PATH=/opt/mssql/lib [CONTAINERID]  /opt/mssql/vdidevice  B D exampledb sa Somepassword123 /tmp/example.bak
    ```
 
 6. Install sqlcmd (https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-ver15](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-ver15)
 7. Execute a backup command
    ```bash
-   sqlcmd -U sa -P somepassword123 -S . -Q "BACKUP DATABASE exampledb TO VIRTUAL_DEVICE='DemoVDI-875af956-1255-49b5-95a1-2eace69d6eef' WITH FORMAT, MAXTRANSFERSIZE=1048576 "
+   sqlcmd -U sa -P Somepassword123 -S . -Q "BACKUP DATABASE exampledb TO VIRTUAL_DEVICE='DemoVDI-875af956-1255-49b5-95a1-2eace69d6eef' WITH FORMAT, MAXTRANSFERSIZE=1048576 "
 
