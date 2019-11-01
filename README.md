@@ -38,8 +38,8 @@ Not a bug, but it is worth noting that the limitations of the demo (which would 
    docker run    -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Somepassword123' -p 1433:1433 -d sqlserver2017-vdi:latest
    ```
 
-5. Create a db called exampledb 
-sqlcmd -Usa -PSomepassword123 -Q"CREATE DATABASE exampledb" 
+5. Create a db called exampledb  
+sqlcmd -Usa -PSomepassword123 -Q"CREATE DATABASE exampledb"  
 OR using Microsoft SQL Server Management Studio -  
 
 https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15#download-ssms)
